@@ -1,3 +1,13 @@
+#README.MD
+
+## Developer notes 
+
++ https://www.youtube.com/watch?v=RuJTV4WNxZ4 (unexpected shutdown 1)
+
++ https://www.youtube.com/watch?v=4C2y9Ym4Kwg (unexpected shutdowns) 
+
+
+
 <p align="center"><img src="https://res.cloudinary.com/dtfbvvkyp/image/upload/v1566331377/laravel-logolockup-cmyk-red.svg" width="400"></p>
 
 <p align="center">
