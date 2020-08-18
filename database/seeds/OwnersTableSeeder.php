@@ -11,6 +11,7 @@ class OwnersTableSeeder extends Seeder
      */
     public function run()
     {
-        //
+        //connect to seeder and create 3 sets of test data
+        factory(\App\Owner::class, 3)->create();
     }
 }
