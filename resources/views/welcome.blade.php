@@ -87,7 +87,9 @@
                 <div class="links">
                     <a href="#readme.md">README.md</a>
                     <a href="api/photos">Photos</a>
+                    <a href="api/photos/1">First Photo</a>
                     <a href="api/owners">Owners</a>
+                    <a href="api/owners/1">First Owner</a>
                    
                     <a href="https://github.com/laravel/laravel">GitHub</a>
                 </div>
