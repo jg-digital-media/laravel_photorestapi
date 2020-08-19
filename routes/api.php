@@ -21,5 +21,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('photos','PhotoController@index');
 Route::get('photos/{photo}','PhotoController@show');
+Route::post('photos','PhotoController@store');
+
+
 Route::get('owners','OwnerController@index');
 Route::get('owners/{owner}','OwnerController@show');
