@@ -12,9 +12,10 @@ class PhotoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        //
+    public function index() {
+    
+        return response(Photo::all(), 200);
+        
     }
 
     /**
@@ -23,10 +24,21 @@ class PhotoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        //
-    }
+    public function store(Request $request) {
+        $data = $request->validate([
+
+              //fields go here taken from model   - obtained from the model
+              "name" => 'required',
+              "caption" => 'required',
+              "copyright" => 'required',
+              "email" => 'required',
+              "owner_id" => 'required'
+
+        ]);
+        
+        //return response(Photo::create($data), 200);
+        $photo = Photo::create($data);
+     }
 
     /**
      * Display the specified resource.
@@ -34,9 +46,8 @@ class PhotoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-        //
+    public function show(Photo $photo) {
+        return response($photo, 200);
     }
 
     /**
@@ -46,10 +57,21 @@ class PhotoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-        //
-    }
+    public function update(Request $request, Photo $photo) {
+
+        $data = $request->validate([
+              //fields go here as per store method
+              "name" => 'required',
+              "caption" => 'required',
+              "copyright" => 'required',
+              "email" => 'required',
+              "owner_id" => 'required'
+
+        ]);
+        
+        //return response on validated data
+        return response($photo->update($data), 200);
+     }
 
     /**
      * Remove the specified resource from storage.
@@ -57,8 +79,9 @@ class PhotoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
-        //
-    }
+    public function destroy(Photo $photo) {
+
+        $photo->delete();
+        return response(null, 204);
+     }
 }

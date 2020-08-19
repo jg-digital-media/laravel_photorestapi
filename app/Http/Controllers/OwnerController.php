@@ -14,7 +14,9 @@ class OwnerController extends Controller
      */
     public function index()
     {
-        //
+
+        return response(Owner::all(), 200);
+        
     }
 
     /**
@@ -33,10 +35,17 @@ class OwnerController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        //
-    }
+    public function store(Request $request) {
+        $data = $request->validate([
+              //fields go here copied from create   - obtained from the model
+              "name" => 'required',
+              "copyright" => 'required'
+
+        ]);
+        
+        return response(Owner::create($data), 200);
+       
+     }
 
     /**
      * Display the specified resource.
@@ -44,9 +53,8 @@ class OwnerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-        //
+    public function show(Owner $owner) {
+        return response($owner, 200);
     }
 
     /**
@@ -67,9 +75,19 @@ class OwnerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-        //
+    public function update(Request $request, Owner $owner) {
+
+        $data = $request->validate([
+            //fields go here copied from create   - obtained from the model
+            "name" => 'required',
+            "copyright" => 'required'
+
+        ]);
+
+        $owner->update($data);
+
+        //return response on validated data
+        return response($owner->update($data), 200);
     }
 
     /**
@@ -78,8 +96,13 @@ class OwnerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Owner $owner)
     {
-        //
+        //delete all photos from specified owner
+        foreach($owner->photos as $photo) {
+            $photo->delete();
+        }
+        $owner->delete();
+        return response(null, 204);
     }
 }
