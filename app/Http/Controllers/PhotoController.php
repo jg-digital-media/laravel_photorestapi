@@ -47,7 +47,7 @@ class PhotoController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show(Photo $photo) {
-        return response($photo, 200);
+        return response( new PhotoResource($photo, 200) );
     }
 
     /**

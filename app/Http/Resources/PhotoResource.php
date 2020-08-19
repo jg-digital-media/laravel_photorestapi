@@ -16,7 +16,7 @@ class PhotoResource extends JsonResource
     {
         return   [
             "title" => $this->title,
-            "caption" => $this->copyright,
+            "caption" => $this->caption,
             "copyright" => $this->copyright,
             "email" => $this->email,
             "owner_id" => $this->owner_id

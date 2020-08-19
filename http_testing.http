@@ -1,0 +1,29 @@
+### GET http://localhost:8000/api/owners
+### GET http://localhost:127.0.0.1:8000/api/owners
+### GET http://localhost:127.0.0.1/api/owners  forbidden
+### GET 127.0.0.1/api/owners
+
+### OWNER REST Requests
+
+
+### All Records of a Class  - returns 200
+GET http://127.0.0.1:8000/api/owners
+
+### Return first instance of a class
+GET http://127.0.0.1:8000/api/owners/1
+
+### First Post Request
+POST http://localhost:8000/api/owners
+Content-Type: application/json
+
+{
+    "name": "The Wibbler",
+    "copyright": "Wibble Photography"
+}
+
+
+
+### Return all instances of another class
+GET http://127.0.0.1:8000/api/photos
+### Return first instance of another class
+GET http://127.0.0.1:8000/api/photos/1

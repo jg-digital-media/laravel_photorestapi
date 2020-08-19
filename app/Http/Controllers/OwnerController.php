@@ -6,6 +6,7 @@ use App\Http\Resources\OwnerResource;
 use App\Owner;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class OwnerController extends Controller
 {
@@ -35,14 +36,15 @@ class OwnerController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request) {
-        $data = $request->validate([
+
+        $validator = Validator::make($request->toArray(), [
               //fields go here copied from create   - obtained from the model
               "name" => 'required',
               "copyright" => 'required'
 
         ]);
         
-        return response(Owner::create($data), 200);
+        return response(new OwnerResource(Owner::create($validator->validate())), 201);
        
      }
 
