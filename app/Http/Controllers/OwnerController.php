@@ -78,17 +78,17 @@ class OwnerController extends Controller
      */
     public function update(Request $request, Owner $owner) {
 
-        $data = $request->validate([
-            //fields go here copied from create   - obtained from the model
+        $validate = Validator::make($request->toArray(), [
+            //fields go here copied from create - obtained from the model
             "name" => 'required',
             "copyright" => 'required'
 
         ]);
 
-        $owner->update($data);
+        $owner->update( $validate->validate() );
 
         //return response on validated data
-        return response($owner->update($data), 200);
+        return response( new OwnerResource($owner), 201);
     }
 
     /**

@@ -21,6 +21,19 @@ Content-Type: application/json
     "copyright": "Wibble Photography"
 }
 
+### Update a Specific Resource
+POST http://localhost:8000/api/owners/4?_method=PUT
+Content-Type: application/json
+
+{
+    "name:": "The Wibble Owner",
+    "copyright": "The Wibble Photography 2020"
+}
+
+
+### DELETE REQUEST
+//DELETE http://localhost:8000/api/owners/5
+
 
 
 ### Return all instances of another class
