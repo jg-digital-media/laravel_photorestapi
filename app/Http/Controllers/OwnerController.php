@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Http\Resources\OwnerResource;
 use App\Owner;
 
 use Illuminate\Http\Request;
@@ -12,11 +14,8 @@ class OwnerController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-
-        return response(Owner::all(), 200);
-        
+    public function index() {
+        return response(OwnerResource::collection(Owner::all(), 200));
     }
 
     /**
