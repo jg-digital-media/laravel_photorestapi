@@ -26,3 +26,4 @@ Route::post('photos','PhotoController@store');
 
 Route::get('owners','OwnerController@index');
 Route::get('owners/{owner}','OwnerController@show');
+Route::post('owners','OwnerController@store');
