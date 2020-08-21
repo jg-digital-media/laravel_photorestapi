@@ -40,3 +40,15 @@ Content-Type: application/json
 GET http://127.0.0.1:8000/api/photos
 ### Return first instance of another class
 GET http://127.0.0.1:8000/api/photos/1
+
+
+### Update a Specific Resource
+POST http://127.0.0.1:8000/api/owners/1?_method=PUT
+Content-Type: application/json
+
+{
+    "title:": "Photo name",
+    "caption": "Shorter Caption",
+    "copyright": "Wibble",
+    "email": "ubernhard@franecki.org"
+}
