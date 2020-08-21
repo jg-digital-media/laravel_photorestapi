@@ -59,7 +59,7 @@ class PhotoController extends Controller
      */
     public function update(Request $request, Photo $photo) {
 
-        $data = $request->validate([
+        $validate = Validator::make($request->toArray(), [
               //fields go here as per store method
               "name" => 'required',
               "caption" => 'required',
@@ -69,8 +69,10 @@ class PhotoController extends Controller
 
         ]);
         
-        //return response on validated data
-        return response($photo->update($data), 200);
+        //return response on validated data        
+        $photo->update($validate->validate());
+
+        return response(new PhotoResource($photo), 201);
      }
 
     /**
