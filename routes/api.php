@@ -19,11 +19,15 @@ use Illuminate\Support\Facades\Route;
 }); */
 
 
+//photo routes
 Route::get('photos','PhotoController@index');
 Route::get('photos/{photo}','PhotoController@show');
+Route::put('photos/{photo}','PhotoController@update');
+Route::patch('photos/{photo}','PhotoController@update');
 Route::post('photos','PhotoController@store');
+Route::delete('photos/{photo}', 'PhotoController@destroy');
 
-
+//owners routes
 Route::get('owners','OwnerController@index');
 Route::get('owners/{owner}','OwnerController@show');
 Route::put('owners/{owner}','OwnerController@update');
